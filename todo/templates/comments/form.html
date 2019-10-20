@@ -1,0 +1,6 @@
+{% load bulma_tags %}
+<form action="{% url 'todo:new_comment' todo.id %}" method="post">
+  {% csrf_token %}
+  {{ form | bulma }}
+  <button class="button is-primary" type="submit">Send</button>
+</form>

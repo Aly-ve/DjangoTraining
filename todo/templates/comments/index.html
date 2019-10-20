@@ -1,0 +1,9 @@
+{% if comments %}
+<hr>
+<h3>Comments</h3>
+<ul>
+  {% for comment in comments %}
+    {% include './show.html' %}
+  {% endfor %}
+</ul>
+{% endif %}
