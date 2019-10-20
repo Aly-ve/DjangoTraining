@@ -17,35 +17,6 @@ class IndexView(generic.ListView):
     context['form'] = TodoForm()
     return context
 
-class DetailView(generic.DetailView):
-  model = Todo
-  template_name = 'todo/show.html'
-
-  def get_context_data(self, **kwargs):
-    context = super(DetailView, self).get_context_data(**kwargs)
-    context['form'] = CommentForm()
-    context['comments'] = Comment.objects.filter(task = self.object.id)
-    return context
-
-"""
-def index(request):
-  context = {
-    'todos': Todo.objects.all(),
-    'form': TodoForm(),
-  }
-  
-  return render(request, 'todo/index.html', context)
-  
-def show(request, todo_id):
-  context = {
-    'todo': get_object_or_404(Todo, pk=todo_id),
-    'comments': Comment.objects.filter(task=todo_id),
-    'form': CommentForm(),
-  }
-  
-  return render(request, 'todo/show.html', context)
-"""
-
 def done_todo(request, todo_id):
   if request.method == 'POST':
     todo = get_object_or_404(Todo, pk=todo_id)
