@@ -1,12 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import Todo, Comment
-from .forms import TodoForm, CommentForm
+from .models import Todo
 
 def index(request):
   context = {
     'todos': Todo.objects.all(),
-    'form': TodoForm(),
   }
   
   return render(request, 'todo/index.html', context)
